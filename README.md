@@ -1,4 +1,4 @@
-# QuickNostr
+# QuickNostr 0.1.0
 
 A small, self‑contained Nostr contact widget that you can use as a modal on any static site. Messages are encrypted on the client and sent via a configurable relay.
 
