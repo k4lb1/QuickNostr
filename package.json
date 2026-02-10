@@ -1,0 +1,22 @@
+{
+  "name": "quicknostr",
+  "version": "1.0.0",
+  "description": "Ein kleines, eigenständiges Nostr-Kontakt-Widget (Modal) zum Versenden verschlüsselter Nachrichten.",
+  "private": false,
+  "main": "nostr-contact.js",
+  "scripts": {
+    "build": "node build-nostr-bundle.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0",
+    "nostr-tools": "^2.4.4"
+  },
+  "keywords": [
+    "nostr",
+    "contact",
+    "widget",
+    "modal"
+  ],
+  "author": "",
+  "license": "MIT"
+}

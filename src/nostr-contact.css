@@ -1,0 +1,252 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #111;
+  color: #f5f5f5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.qn-main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 64px 24px;
+}
+
+.qn-main h1 {
+  font-size: 24px;
+  margin: 0 0 12px;
+}
+
+.qn-main p {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin: 0 0 8px;
+}
+
+.header-actions {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nostr-chat-btn {
+  background: rgba(30, 30, 34, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  color: #d0d0d0;
+}
+
+.nostr-chat-btn:hover {
+  transform: scale(1.05);
+}
+
+.nostr-chat-btn:active {
+  transform: scale(0.95);
+}
+
+.nostr-chat-icon {
+  flex-shrink: 0;
+}
+
+.nostr-contact-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.nostr-contact-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nostr-contact-modal {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  padding: 14px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(20, 20, 24, 0.55);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  box-shadow:
+    0 18px 32px rgba(0, 0, 0, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.nostr-contact-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #b0b0b0;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nostr-contact-close:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.nostr-contact-hint {
+  margin: 0 0 12px;
+  font-size: 13px;
+  color: #a0a0a0;
+  line-height: 1.4;
+}
+
+.nostr-contact-hint.is-hidden {
+  display: none;
+}
+
+.nostr-contact-textarea {
+  display: block;
+  width: 100%;
+  min-height: 90px;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  background: transparent;
+  background-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  color: #f5f5f5;
+  font-family: inherit;
+  font-size: 16px;
+  resize: vertical;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 4px 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+.nostr-contact-textarea::placeholder {
+  color: #a0a0a0;
+}
+
+.nostr-contact-textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    inset 4px 6px 18px rgba(0, 0, 0, 0.65),
+    inset -4px -6px 20px rgba(255, 255, 255, 0.06);
+}
+
+.nostr-contact-send {
+  display: block;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: transparent;
+  background-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  color: #f5f5f5;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
+  box-sizing: border-box;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.16),
+    4px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.nostr-contact-send:hover:not(:disabled) {
+  transform: none;
+}
+
+.nostr-contact-send:active:not(:disabled) {
+  transform: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    inset 4px 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.nostr-contact-send:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.nostr-contact-feedback {
+  margin: 0;
+  font-size: 13px;
+  color: #a0a0a0;
+  min-height: 1.2em;
+}
+
+.nostr-contact-feedback.is-success {
+  color: #7dd27d;
+}
+
+.nostr-contact-feedback.is-error {
+  color: #ff6b6b;
+}
+
+@media (max-width: 600px) {
+  .nostr-contact-modal {
+    max-width: 320px;
+    padding: 10px;
+  }
+
+  .nostr-contact-textarea {
+    min-height: 80px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-actions {
+    top: 16px;
+    right: 16px;
+  }
+
+  .nostr-chat-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nostr-chat-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .nostr-contact-overlay {
+    padding: 16px;
+  }
+}
+
